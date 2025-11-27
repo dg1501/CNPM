@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CINEMA THEATRE</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      .sidebar {
+        width: 60px;
+        background: #2c2c2c;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+      }
+
+      .sidebar img {
+        width: 30px;
+        margin: 20px 0;
+        cursor: pointer;
+      }
+
+      .main {
+        margin-left: 60px;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 30px;
+        background-color: #fff;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .navbar-left {
+        display: flex;
+        align-items: center;
+      }
+
+      .navbar-left h2 {
+        color: goldenrod;
+        margin-right: 20px;
+      }
+
+      .navbar-right {
+        display: flex;
+        align-items: center;
+      }
+
+      .navbar-right a {
+        margin-left: 20px;
+        text-decoration: none;
+        color: #333;
+        cursor: pointer;
+      }
+
+      .navbar-right input {
+        margin-left: 10px;
+        padding: 4px;
+      }
+
+      .hero {
+        background: url("https://static2.vieon.vn/vieplay-image/carousel_web_v4/2022/12/02/6zu0d26q_1920x1080-congvienkyjura_1920_1080.jpeg")
+          no-repeat center center;
+        background-size: contain;
+        background-color: black;
+        height: 600px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        padding: 20px;
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .menu {
+        display: flex;
+        justify-content: center;
+        background-color: #f7f7f7;
+        padding: 15px 0;
+        gap: 30px;
+      }
+
+      .menu a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+      }
+
+      .menu a:hover {
+        color: goldenrod;
+      }
+
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background-color: #fff;
+        padding: 20px 30px;
+        border-radius: 10px;
+        width: 300px;
+        position: relative;
+      }
+
+      .modal-content h3 {
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      .modal-content input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .modal-content button {
+        width: 100%;
+        padding: 10px;
+        background-color: goldenrod;
+        border: none;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: bold;
+        color: #999;
+      }
+
+      .close-btn:hover {
+        color: black;
+      }
+
+      .switch-link {
+        text-align: center;
+        margin-top: 10px;
+        color: goldenrod;
+        cursor: pointer;
+      }
+
+      .switch-link:hover {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <img
+        src="https://img.icons8.com/ios-filled/50/ffffff/home.png"
+        alt="Home"
+      />
+      <img
+        src="https://img.icons8.com/ios-filled/50/ffffff/camera.png"
+        alt="Movies"
+      />
+      <img
+        src="https://img.icons8.com/ios-filled/50/ffffff/ticket.png"
+        alt="Tickets"
+      />
+      <img
+        src="https://img.icons8.com/ios-filled/50/ffffff/contact-card.png"
+        alt="Contact"
+      />
+    </div>
+
+    <!-- LOGO ( TÊN WEB )  -->
+    <div class="main">
+      <div class="navbar">
+        <div class="navbar-left">
+          <h2>Cinema XXI</h2>
+          <span>MOVIE THEATER</span>
+        </div>
+        <div class="navbar-right">
+          <a onclick="openModal()">Đăng nhập</a>
+          <input type="text" placeholder="Search..." />
+        </div>
+      </div>
+
+      <!-- CÔNG CỤ MENU CỦA WEB  -->
+      <div class="menu">
+        <a href="#">Trang chủ</a>
+        <a href="#">Rạp</a>
+        <a href="#">Phim</a>
+        <a href="#">Lịch chiếu</a>
+        <a href="#">Sự kiện</a>
+        <a href="#">Giải đáp</a>
+      </div>
+
+      <div class="hero"></div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="authModal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">×</span>
+
+        <!-- FROM ĐĂNG NHẬP -->
+        <div id="loginForm">
+          <h3>Đăng nhập</h3>
+          <form action="login.php" method="POST">
+            <!-- TÀI KHOẢN -->
+            <input
+              type="text"
+              name="username"
+              placeholder="Tên đăng nhập"
+              required
+            /><br />
+
+            <!-- MẬT KHẨU  -->
+            <input
+              type="password"
+              name="password"
+              placeholder="Mật khẩu"
+              required
+            /><br />
+            <div
+              style="display: flex; align-items: center; margin-bottom: 10px"
+            >
+              <input
+                type="checkbox"
+                id="remember"
+                name="remember"
+                style="margin-right: 6px"
+              />
+
+              <!--REMEMBER PASSWORD  -->
+              <label for="remember" style="font-size: 14px; color: #333"
+                >Nhớ mật khẩu</label
+              >
+            </div>
+            <button type="submit">Đăng nhập</button>
+          </form>
+          <div class="switch-link" onclick="switchToRegister()">
+            Chưa có tài khoản? Đăng ký
+          </div>
+        </div>
+
+        <!--- FROM ĐĂNG KÝ  -->
+        <div id="registerForm" style="display: none">
+          <h3>Đăng ký</h3>
+          <form action="register.php" method="POST">
+            <!-- HỌ TÊN NGƯỜI DÙNG -->
+            <input
+              type="text"
+              name="hoten"
+              placeholder="Họ và tên"
+              required
+            /><br />
+
+            <!-- TÊN TÀI KHOẢN NGƯỜI DÙNG  -->
+            <input
+              type="text"
+              name="taikhoan"
+              placeholder="Tên đăng nhập"
+              required
+            /><br />
+
+            <!-- EMAIL NGƯỜI DÙNG  -->
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+            /><br />
+
+            <!-- SỐ ĐIỆN THOẠI NGƯỜI DÙNG  -->
+            <input
+              type="text"
+              name="sdt"
+              placeholder="Số điện thoại"
+              required
+            /><br />
+
+            <!-- MẬT KHẨU NGƯỜI DÙNG  -->
+            <input
+              type="password"
+              name="password"
+              placeholder="Mật khẩu đăng nhập"
+              required
+            /><br />
+
+            <!-- NHẬP LẠI MẬT KHẨU NGƯỜI DÙNG  -->
+            <input
+              type="password"
+              name="confirm_password"
+              placeholder="Nhập lại mật khẩu"
+              required
+            /><br />
+
+            <!-- ĐĂNG KÝ  -->
+            <div style="display: flex; gap: 10px">
+              <button type="submit">Đăng ký</button>
+              <button
+                type="button"
+                onclick="switchToLogin()"
+                style="background-color: #ccc; color: black"
+              >
+                <!-- HUỶ ĐĂNG KÝ  -->
+                Huỷ
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function openModal() {
+        document.getElementById("authModal").style.display = "flex";
+      }
+
+      function closeModal() {
+        document.getElementById("authModal").style.display = "none";
+      }
+
+      window.onclick = function (event) {
+        const modal = document.getElementById("authModal");
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      };
+
+      function switchToRegister() {
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("registerForm").style.display = "block";
+      }
+
+      function switchToLogin() {
+        document.getElementById("loginForm").style.display = "block";
+        document.getElementById("registerForm").style.display = "none";
+      }
+    </script>
+  </body>
+</html>
