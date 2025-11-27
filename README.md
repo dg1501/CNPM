@@ -1,10 +1,19 @@
 # 🎬 WEBSITE ĐẶT VÉ XEM PHIM ONLINE
 ## 🎯 Giới thiệu
 Website đặt vé xem phim trực tuyến giúp người dùng dễ dàng tìm kiếm phim, chọn rạp, suất chiếu và ghế ngồi một cách nhanh chóng. Hệ thống được thiết kế trực quan, hoạt động ổn định trên mọi thiết bị và mang đến trải nghiệm mua vé hiện đại – tiện lợi – an toàn.
+## 🔥 Tại sao xây dựng hệ thống này?
+1. Tự động hóa quy trình mua vé truyền thống
+ 
+2. Hạn chế xếp hàng tại quầy
+ 
+3. Giúp rạp dễ dàng quản lý phim, suất chiếu và đặt chỗ
+  
+4. Tạo môi trường thực hành backend + database dành cho sinh viên CNTT
 ## 🚀 Tính năng nổi bật
+### 👤 Người dùng
 - 🔍 Tìm kiếm phim theo tên hoặc thể loại
 
-- 🎦 Xem thông tin chi tiết phim (nội dung, thời lượng, trailer…)
+- 🎦 Xem danh sách phim đang chiếu & sắp chiếu
 
 - 🏢 Chọn rạp và xem lịch chiếu theo từng ngày
 
@@ -16,7 +25,16 @@ Website đặt vé xem phim trực tuyến giúp người dùng dễ dàng tìm 
 
 - 👤 Đăng nhập/Đăng ký người dùng
 
-- 🛠️ Trang quản trị dành cho admin (quản lý phim, rạp, suất chiếu...)</p>
+### 🛠️ Trang quản trị dành cho admin
+- Quản lý phim: thêm – sửa – xóa</p>
+<img width="1920" height="980" alt="image" src="https://github.com/user-attachments/assets/ca2b18fa-51fa-4de8-bbac-54a89e3f25d0" /></p>
+
+- Quản lý suất chiếu</p>
+<img width="1920" height="925" alt="image" src="https://github.com/user-attachments/assets/f95a47e4-5757-40f9-b8e1-b0c446348a94" /></p>
+
+- Quản lý người dùng</p>
+<img width="1920" height="926" alt="image" src="https://github.com/user-attachments/assets/a0b8dd4d-2df0-4659-872a-fade3963907f" /></p>
+
 ## 🖥️ Giao diện hệ thống
 ### 1. Trang chủ: Hiển thị danh sách phim đang chiếu.</p>
 <img width="1919" height="1031" alt="image" src="https://github.com/user-attachments/assets/b1eedec4-39dc-4285-9c2f-ca4cd05b2199" /></p>
@@ -54,6 +72,13 @@ Website đặt vé xem phim trực tuyến giúp người dùng dễ dàng tìm 
  └── 📄 README.md
 ```
 ## 🧪 Cách chạy dự án
+### 1️⃣ Cài đặt yêu cầu
+- XAMPP
+
+- PHP driver SQL Server
+
+- SQL Server 2019+
+### 2️⃣ Cài đặt
 1. Clone project về máy</p>
   `git clone <link-repo>`
 2. Import cơ sở dữ liệu vào SQL Server
