@@ -1,4 +1,3 @@
-## LINK YOUTUBE: https://youtu.be/txQeHYK_Lhc
 # 🎬 WEBSITE ĐẶT VÉ XEM PHIM ONLINE
 ## 🎯 Giới thiệu
 Website đặt vé xem phim trực tuyến giúp người dùng dễ dàng tìm kiếm phim, chọn rạp, suất chiếu và ghế ngồi một cách nhanh chóng. Hệ thống được thiết kế trực quan, hoạt động ổn định trên mọi thiết bị và mang đến trải nghiệm mua vé hiện đại – tiện lợi – an toàn.
